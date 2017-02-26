@@ -1,0 +1,24 @@
+body{
+    color: #333;
+}
+
+.background {
+    background-image: url('../img/resource_manager.jpg');
+    background-position: center center;
+    background-size: cover;
+    margin-top:0;
+    height: 100vh;
+}
+
+.concept-section{
+    height: 80vh;
+}
+
+.sign-up-page{
+    padding-top: 150pt;
+}
+
+.border-none{
+    border: none;
+}
+
