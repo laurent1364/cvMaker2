@@ -33,33 +33,7 @@
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-transparent navbar-primary navbar-fixed-top navbar-color-on-scroll">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-transparent">
-                <i class="fa fa-1-7x fa-bars" aria-hidden="true"></i>
-            </button>
-            <a class="navbar-brand white" href="#pablo">CV MAKER</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbar-collapse-transparent">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a  class="white" href="#pablo">
-                        <i class="fa fa-pencil-square-o"></i> Sign up
-                    </a>
-                </li>
-                <li>
-                    <a  class="white" href="#pablo">
-                        <i class="fa fa-sign-in"></i> Sign in
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<!-- End Navbar -->
+<div th:include="fragments/header">...</div>
 
 <div class="wrapper">
     <div class="header header-filter background">
@@ -95,6 +69,8 @@
         </div>
     </div>
 </div>
+
+<div th:include="fragments/footer">...</div>
 
 <script src="../static/bower_components/jquery/dist/jquery.min.js"
         th:src="@{bower_components/jquery/dist/jquery.min.js}"></script>

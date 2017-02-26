@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-transparent navbar-primary navbar-fixed-top navbar-color-on-scroll">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#navbar-collapse-transparent">
+                <i class="fa fa-1-7x fa-bars" aria-hidden="true"></i>
+            </button>
+            <a class="navbar-brand white" href="/">CV MAKER</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-transparent">
+            <ul class="nav navbar-nav navbar-right">
+                <li th:if="${isUser == false and isAdmin == false}">
+                    <a class="white" href="/sign-up">
+                        <i class="fa fa-pencil-square-o"></i> Sign up
+                    </a>
+                </li>
+                <li th:if="${isUser == false and isAdmin == false}">
+                    <a class="white" href="/login">
+                        <i class="fa fa-sign-in"></i> Sign in
+                    </a>
+                </li>
+
+                <li th:if="${isUser == true or isAdmin == true}">
+                    <a class="white" href="/login">
+                        <i class="fa fa-user"></i>
+                        <span th:text="${username}">username</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#" th:text="${header.settings}">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" th:text="${header.my.profile}">My profile</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <form action="#" th:action="@{/logout}" method="post">
+                                <button type="submit" th:text="${header.logout}">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- End Navbar -->
+
+</body>
+</html>
+
+

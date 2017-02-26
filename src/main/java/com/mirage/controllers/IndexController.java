@@ -1,6 +1,11 @@
 package com.mirage.controllers;
 
+import com.mirage.services.security.SecurityService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -9,8 +14,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
+    private SecurityService securityService;
+
+    @Autowired
+    public void setSecurityService(SecurityService securityService) {
+        this.securityService = securityService;
+    }
+
     @RequestMapping({"/", ""})
-    public String index(){
+    public String index(Model model){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("isUser", securityService.isUser(auth));
+        model.addAttribute("isAdmin", securityService.isAdmin(auth));
+
+        if(auth.isAuthenticated()){
+            model.addAttribute("username", auth.getName());
+        }
+
         return "index";
     }
 
@@ -20,7 +41,16 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login(Model model){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if(auth.isAuthenticated()){
+            return "users/main";
+        }
+        model.addAttribute("isUser", false);
+        model.addAttribute("isAdmin", false);
+
         return "login";
     }
 }
