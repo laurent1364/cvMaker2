@@ -27,6 +27,7 @@ public class IndexController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("isUser", securityService.isUser(auth));
         model.addAttribute("isAdmin", securityService.isAdmin(auth));
+        model.addAttribute("headerToDisplay", "transparent");
 
         if(auth.isAuthenticated()){
             model.addAttribute("username", auth.getName());
@@ -45,11 +46,12 @@ public class IndexController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if(auth.isAuthenticated()){
-            return "users/main";
+        if(securityService.isUser(auth)){
+            return "redirect:/about_me";
         }
         model.addAttribute("isUser", false);
         model.addAttribute("isAdmin", false);
+        model.addAttribute("headerToDisplay", "transparent");
 
         return "login";
     }

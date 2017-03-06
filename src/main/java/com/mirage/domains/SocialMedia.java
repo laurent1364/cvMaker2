@@ -1,19 +1,45 @@
 package com.mirage.domains;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mirage.domains.utils.AbstractDomainClass;
+import com.mirage.domains.utils.Logo;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mirage on 24/02/2017.
  */
 @Entity
-public class SocialMedia extends AbstractDomainClass{
+@Table(name = "social_media")
+public class SocialMedia extends AbstractDomainClass {
 
     private String name;
-    private String logoName;
 
+    @ManyToOne
+    @JoinColumn(name = "logo_id", nullable = false)
+    private Logo logo;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "socialMedia", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<SocialNetwork> socialNetworks = new ArrayList<>();
+
+    /*******************CONSTRUCTOR ***************/
+
+    public SocialMedia(String name, Logo logo) {
+        this.name = name;
+        this.logo = logo;
+    }
+
+    public SocialMedia(String name){
+        this.name = name;
+    }
+
+    public SocialMedia() {
+    }
+
+    /************************ GETTER & SETTER **********************/
 
     public String getName() {
         return name;
@@ -23,11 +49,19 @@ public class SocialMedia extends AbstractDomainClass{
         this.name = name;
     }
 
-    public String getLogoName() {
-        return logoName;
+    public Logo getLogo() {
+        return logo;
     }
 
-    public void setLogoName(String logoName) {
-        this.logoName = logoName;
+    public void setLogo(Logo logo) {
+        this.logo = logo;
+    }
+
+    public List<SocialNetwork> getSocialNetworks() {
+        return socialNetworks;
+    }
+
+    public void setSocialNetworks(List<SocialNetwork> socialNetworks) {
+        this.socialNetworks = socialNetworks;
     }
 }

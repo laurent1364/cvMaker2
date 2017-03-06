@@ -43,15 +43,16 @@
                     <div class="card card-signup">
                         <form class="form" th:object="${loginForm}" th:action="@{/login}" method="post">
                             <div class="header header-primary text-center">
-                                <h4>Sign in</h4>
+                                <h4 th:text="#{login.title}">Sign in</h4>
+                                <!--TODO Add connection to social media-->
                                 <div class="social-line">
-                                    <a href="#pablo" class="btn btn-simple btn-just-icon">
+                                    <a href="#" class="btn btn-simple btn-just-icon">
                                         <i class="fa fa-facebook-square"></i>
                                     </a>
-                                    <a href="#pablo" class="btn btn-simple btn-just-icon">
+                                    <a href="#" class="btn btn-simple btn-just-icon">
                                         <i class="fa fa-twitter"></i>
                                     </a>
-                                    <a href="#pablo" class="btn btn-simple btn-just-icon">
+                                    <a href="#" class="btn btn-simple btn-just-icon">
                                         <i class="fa fa-google-plus"></i>
                                     </a>
                                 </div>
@@ -63,18 +64,18 @@
 										<span class="input-group-addon">
 											<i class="material-icons">email</i>
 										</span>
-                                    <input type="text" class="form-control" placeholder="Login..." name="username" id="username"/>
+                                    <input type="text" class="form-control" th:placeholder="#{login.username}" name="username" id="username"/>
                                 </div>
 
                                 <div class="input-group label-floating" th:class="${param.error} ? 'input-group label-floating has-error' : 'input-group label-floating'">
 										<span class="input-group-addon">
 											<i class="material-icons">lock_outline</i>
 										</span>
-                                    <input type="password" placeholder="Password..." class="form-control" name="password" id="password"/>
+                                    <input type="password" th:placeholder="#{login.password}" class="form-control" name="password" id="password"/>
                                 </div>
                             </div>
                             <div class="footer text-center">
-                                <button type="submit" class="btn btn-simple btn-primary btn-lg border-none">Connection</button>
+                                <button type="submit" class="btn btn-simple btn-primary btn-lg border-none" th:text="#{login.btn.connection}">Connection</button>
                             </div>
                         </form>
                     </div>

@@ -7,4 +7,5 @@ import com.mirage.domains.SocialMedia;
  */
 public interface SocialMediaService extends CRUDService<SocialMedia> {
 
+    SocialMedia saveOrUpdateWithLogoId(Integer id, SocialMedia socialMedia);
 }

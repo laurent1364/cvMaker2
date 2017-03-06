@@ -1,7 +1,7 @@
 package com.mirage.services.reposervices;
 
-import com.mirage.domains.Address;
-import com.mirage.repositories.AddressRepository;
+import com.mirage.domains.utils.Address;
+import com.mirage.repositories.utils.AddressRepository;
 import com.mirage.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

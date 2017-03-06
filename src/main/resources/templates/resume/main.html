@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76"
+          href="../../static/lib/x_material_kit_free_v1.1.1/assets/img/apple-icon.png"/>
+    <link rel="icon" type="image/png" href="../../static/lib/x_material_kit_free_v1.1.1/assets/img/favicon.png"/>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>CV maker</title>
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+
+    <link href="../../static/bower_components/font-awesome/css/font-awesome.min.css"
+          th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <!-- CSS Files -->
+    <link href="../../static/bower_components/material-kit/assets/css/material-kit.css"
+          th:href="@{bower_components/material-kit/assets/css/material-kit.css}"
+          rel="stylesheet" media="screen"/>
+
+    <link href="../../static/bower_components/bootstrap/dist/css/bootstrap.min.css"
+          th:href="@{bower_components/bootstrap/dist/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <link href="../../static/css/main.css"
+          th:href="@{css/main.css}"
+          rel="stylesheet" media="screen"/>
+</head>
+<body>
+
+<div th:include="fragments/header">...</div>
+
+
+<div class="cvmaker-container container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="cvmaker-card">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 cvmaker-resume-template-img">
+                        <img src="../../static/img/cv_template.jpg"/>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <h4>Titre du CV</h4>
+                        <button class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-success btn-sm">
+                            <i class="fa fa-eye"></i>
+                            Edit
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cvmaker-resume-content">
+                    <table>
+                        <tbody>
+                        <tr class="cvmaker-resume-content-tr">
+                            <td class="cvmaker-resume-about-icon">
+                                <i class="fa fa-briefcase"></i>
+                            </td>
+                            <td class="cvmaker-resume-progress-bar">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="83" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 83%;">
+                                        <span class="sr-only">10/12</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cvmaker-resume-content-tr">
+                            <td class="cvmaker-resume-about-icon">
+                                <i class="fa fa-graduation-cap"></i>
+                            </td>
+                            <td class="cvmaker-resume-progress-bar">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 75%;">
+                                        <span class="sr-only">6/8</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cvmaker-resume-content-tr">
+                            <td class="cvmaker-resume-about-icon">
+                                <i class="fa fa-cogs"></i>
+                            </td>
+                            <td class="cvmaker-resume-progress-bar">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 75%;">
+                                        <span class="sr-only">6/8</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cvmaker-resume-content-tr">
+                            <td class="cvmaker-resume-about-icon">
+                                <i class="fa fa-gamepad"></i>
+                            </td>
+                            <td class="cvmaker-resume-progress-bar">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 75%;">
+                                        <span class="sr-only">6/8</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cvmaker-resume-content-tr">
+                            <td class="cvmaker-resume-about-icon">
+                                <i class="fa fa-thumbs-o-up"></i>
+                            </td>
+                            <td class="cvmaker-resume-progress-bar">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                         aria-valuemax="100" style="width: 75%;">
+                                        <span class="sr-only">6/8</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:include="fragments/footer">...</div>
+
+<script src="../../static/bower_components/jquery/dist/jquery.min.js"
+        th:src="@{bower_components/jquery/dist/jquery.min.js}"></script>
+
+<script src="../../static/bower_components/bootstrap/dist/js/bootstrap.min.js"
+        th:src="@{bower_components/bootstrap/dist/js/bootstrap.min.js}"
+        type="text/javascript"></script>
+
+
+<script src="../../static/bower_components/material-kit/assets/js/material.min.js"
+        th:src="@{bower_components/material-kit/assets/js/material.min.js}"
+        type="text/javascript"></script>
+
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="../../static/bower_components/nouislider/distribute/nouislider.min.js"
+        th:src="@{bower_components/nouislider/distribute/nouislider.min.js}"
+        type="text/javascript"></script>
+
+<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+<script src="../../static/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"
+        th:src="@{bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"
+        type="text/javascript"></script>
+
+<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+<script src="../../static/bower_components/material-kit/assets/js/material-kit.js"
+        th:src="@{bower_components/material-kit/assets/js/material-kit.js}"
+        type="text/javascript"></script>
+
+<script src="../../static/js/main.js"
+        th:src="@{js/main.js}"
+        type="text/javascript"></script>
+
+</body>
+</html>

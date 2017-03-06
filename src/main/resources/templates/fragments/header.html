@@ -2,11 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
+
+
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-transparent navbar-primary navbar-fixed-top navbar-color-on-scroll">
+<nav class="navbar navbar-transparent navbar-primary navbar-fixed-top navbar-color-on-scroll"
+     th:class="${headerToDisplay == 'transparent'} ? 'navbar navbar-transparent navbar-primary navbar-fixed-top navbar-color-on-scroll' : 'navbar navbar-primary navbar-fixed-top'">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -17,33 +20,115 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse-transparent">
+            <ul class="nav navbar-nav">
+                <li th:if="${isUser == true}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-info-circle"></i>
+                        <span th:text="#{header.about.me}">About Me</span>
+                        <b class="caret"></b>
+                        <div class="ripple-container"></div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="about_me#/experiences">
+                                <i class="fa fa-briefcase"></i>
+                                <span th:text="#{header.experiences}">Experiences</span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="about_me#/educations">
+                                <i class="fa fa-graduation-cap"></i>
+                                <span th:text="#{header.educations}">Educations</span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="about_me#/domains">
+                                <i class="fa fa-cogs"></i>
+                                <span  th:text="#{header.domains.and.skills}">Domains and Skills</span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="about_me#/hobbies">
+                                <i class="fa fa-cubes"></i>
+                                <span th:text="#{header.hobbies}">Hobbies</span>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="about_me#/referees" >
+                                <i class="fa fa-thumbs-o-up"></i>
+                                <span th:text="#{header.referees}">Referees</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li th:if="${isUser == true}">
+                    <a href="/resume">
+                        <i class="fa fa-book"></i>
+                        <span th:text="#{header.my.resume}">My resumes</span>
+                    </a>
+                </li>
+                <li th:if="${isUser == true}">
+                    <a href="/tutorials">
+                        <i class="fa fa-magic"></i>
+                        <span th:text="#{header.tutorials}">Tutorials</span>
+                    </a>
+                </li>
+                <li th:if="${isAdmin == true}">
+                    <a href="/admin">
+                        <i class="fa fa-users"></i>
+                        <span th:text="#{header.manage.users}">Manage Users</span>
+                    </a>
+                </li>
+            </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${isUser == false and isAdmin == false}">
                     <a class="white" href="/sign-up">
-                        <i class="fa fa-pencil-square-o"></i> Sign up
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span th:text="#{header.sign.up}">Sign Up</span>
                     </a>
                 </li>
                 <li th:if="${isUser == false and isAdmin == false}">
                     <a class="white" href="/login">
-                        <i class="fa fa-sign-in"></i> Sign in
+                        <i class="fa fa-sign-in"></i>
+                        <span th:text="#{header.sign.in}">Sign In</span>
                     </a>
                 </li>
 
                 <li th:if="${isUser == true or isAdmin == true}">
-                    <a class="white" href="/login">
-                        <i class="fa fa-user"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user-circle"></i>
                         <span th:text="${username}">username</span>
+                        <b class="caret"></b>
+                        <div class="ripple-container"></div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#" th:text="${header.settings}">Settings</a></li>
+                        <!--TODO change design of logout button -->
+                        <li>
+                            <a href="#" th:text="#{header.settings}">
+                                Settings
+                            </a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a href="#" th:text="${header.my.profile}">My profile</a></li>
+                        <li>
+                            <a href="#" th:text="#{header.my.profile}">
+                                My profile
+                            </a>
+                        </li>
                         <li class="divider"></li>
                         <li>
                             <form action="#" th:action="@{/logout}" method="post">
-                                <button type="submit" th:text="${header.logout}">Logout</button>
+                                <button class="button-logout" type="submit" >
+                                    <i class="fa fa-sign-out"></i>
+                                    <span th:text="#{header.logout}"></span>
+                                </button>
                             </form>
                         </li>
+
                     </ul>
                 </li>
             </ul>
@@ -51,6 +136,10 @@
     </div>
 </nav>
 <!-- End Navbar -->
+
+<script src="../../static/js/main.js"
+        th:src="@{js/main.js}"
+        type="text/javascript"></script>
 
 </body>
 </html>

@@ -54,8 +54,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/**/favicon.ico").permitAll()
                 .and().authorizeRequests().antMatchers("/static/**").permitAll()
-                .and().formLogin().loginPage("/login").failureUrl("/login?errors").defaultSuccessUrl("/users")
-                .and().authorizeRequests().antMatchers("/users/**").hasAnyAuthority("USER")
+                .and().formLogin().loginPage("/login").failureUrl("/login?errors").defaultSuccessUrl("/about_me")
+                .and().authorizeRequests().antMatchers("/about_me/**").hasAnyAuthority("USER")
+                .and().authorizeRequests().antMatchers("/resume/**").hasAnyAuthority("USER")
+                .and().authorizeRequests().antMatchers("/tutorials/**").hasAnyAuthority("USER")
                 .and().authorizeRequests().antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .and().exceptionHandling().accessDeniedPage("/access_denied");
     }

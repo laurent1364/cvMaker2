@@ -21,15 +21,37 @@ public class UserController {
         this.securityService = securityService;
     }
 
-    @RequestMapping("/users")
-    public String user(Model model){
+    @RequestMapping("/about_me")
+    public String aboutMe(Model model){
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("isUser", securityService.isUser(auth));
         model.addAttribute("isAdmin", securityService.isAdmin(auth));
-
+        model.addAttribute("headerToDisplay", "solid");
         model.addAttribute("username", auth.getName());
-        return "users/main";
+        return "about_me/main";
+    }
+
+    @RequestMapping("/resume")
+    public String resume(Model model){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("isUser", securityService.isUser(auth));
+        model.addAttribute("isAdmin", securityService.isAdmin(auth));
+        model.addAttribute("headerToDisplay", "solid");
+        model.addAttribute("username", auth.getName());
+        return "resume/main";
+    }
+
+    @RequestMapping("/tutorials")
+    public String tutorials(Model model){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("isUser", securityService.isUser(auth));
+        model.addAttribute("isAdmin", securityService.isAdmin(auth));
+        model.addAttribute("headerToDisplay", "solid");
+        model.addAttribute("username", auth.getName());
+        return "tutorials/main";
     }
 
 }

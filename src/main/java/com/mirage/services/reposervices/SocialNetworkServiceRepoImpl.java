@@ -4,12 +4,14 @@ import com.mirage.domains.SocialNetwork;
 import com.mirage.repositories.SocialNetworkRepository;
 import com.mirage.services.SocialNetworkService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by Mirage on 24/02/2017.
  */
+@Service
 public class SocialNetworkServiceRepoImpl implements SocialNetworkService {
 
     private SocialNetworkRepository socialNetworkRepository;

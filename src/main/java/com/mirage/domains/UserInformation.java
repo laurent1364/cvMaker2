@@ -1,33 +1,63 @@
 package com.mirage.domains;
 
+import com.mirage.domains.utils.Address;
+import com.mirage.domains.utils.AbstractDomainClass;
+import com.mirage.enums.Gender;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Mirage on 24/02/2017.
  */
 @Entity
-public class UserInformation extends AbstractDomainClass{
+@Table(name = "user_information")
+public class UserInformation extends AbstractDomainClass {
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    @PrimaryKeyJoinColumn
     private User user;
 
     private String firstName;
     private String lastName;
-    private Date birthDate;
-    private Boolean isMale;
-    private String email;
-
-    @OneToOne(cascade = CascadeType.PERSIST)
-    private Address address;
     private String phoneNumber;
 
-/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userInformation", orphanRemoval = true)
-    private List<SocialNetwork> socialNetworks;*/
+    private String email;
 
-    private String pictureUrl;
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
 
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    private Boolean hasDrivingLicense;
+    private String profilePictureUrl;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "userInformation", orphanRemoval = true)
+    private Set<SocialNetwork> socialNetworks = new HashSet<>();
+
+
+    public UserInformation(String firstName, String lastName, String phoneNumber, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    /*******************CONSTRUCTOR ***************/
+
+
+
+    public UserInformation() {
+    }
+
+    /************************ GETTER & SETTER **********************/
     public User getUser() {
         return user;
     }
@@ -35,7 +65,6 @@ public class UserInformation extends AbstractDomainClass{
     public void setUser(User user) {
         this.user = user;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -53,20 +82,12 @@ public class UserInformation extends AbstractDomainClass{
         this.lastName = lastName;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Boolean getMale() {
-        return isMale;
-    }
-
-    public void setMale(Boolean male) {
-        isMale = male;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -77,6 +98,38 @@ public class UserInformation extends AbstractDomainClass{
         this.email = email;
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Boolean getHasDrivingLicense() {
+        return hasDrivingLicense;
+    }
+
+    public void setHasDrivingLicense(Boolean hasDrivingLicense) {
+        this.hasDrivingLicense = hasDrivingLicense;
+    }
+
+    public String getProfilePictureUrl() {
+        return profilePictureUrl;
+    }
+
+    public void setProfilePictureUrl(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -85,27 +138,17 @@ public class UserInformation extends AbstractDomainClass{
         this.address = address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-/*    public List<SocialNetwork> getSocialNetworks() {
+    public Set<SocialNetwork> getSocialNetworks() {
         return socialNetworks;
     }
 
-    public void setSocialNetworks(List<SocialNetwork> socialNetworks) {
+    public void setSocialNetworks(Set<SocialNetwork> socialNetworks) {
         this.socialNetworks = socialNetworks;
-    }*/
-
-    public String getPictureUrl() {
-        return pictureUrl;
     }
 
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
+    public SocialNetwork addSocialNetwork(SocialNetwork socialNetwork) {
+        this.socialNetworks.add(socialNetwork);
+        socialNetwork.setUserInformation(this);
+        return socialNetwork;
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Mirage on 26/02/2017.
  */
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     private SecurityService securityService;
@@ -21,14 +22,21 @@ public class AdminController {
         this.securityService = securityService;
     }
 
-    @RequestMapping("/admin")
+    @RequestMapping("/home")
     public String adminPage(Model model){
+        model = setAdminGlobalModel(model);
 
+        return "admin/main";
+    }
+
+    private Model setAdminGlobalModel(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("isUser", securityService.isUser(auth));
         model.addAttribute("isAdmin", securityService.isAdmin(auth));
+        model.addAttribute("headerToDisplay", "solid");
 
         model.addAttribute("username", auth.getName());
-        return "admin/main";
+
+        return model;
     }
 }

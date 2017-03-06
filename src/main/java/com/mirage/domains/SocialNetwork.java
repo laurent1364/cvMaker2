@@ -1,43 +1,61 @@
 package com.mirage.domains;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import com.mirage.domains.utils.AbstractDomainClass;
+
+import javax.persistence.*;
 
 /**
  * Created by Mirage on 24/02/2017.
  */
 @Entity
-public class SocialNetwork extends AbstractDomainClass{
+@Table(name = "social_network")
+public class SocialNetwork extends AbstractDomainClass {
 
-/*    @OneToOne
-    private SocialMedia socialMedia;*/
-    private String url;
+    private String linkAddress;
 
-/*    @ManyToOne
-    private UserInformation userInformation;*/
+    @OneToOne
+    @JoinColumn(name = "user_information_id", nullable = false, updatable = false)
+    private UserInformation userInformation;
 
-/*    public SocialMedia getSocialMedia() {
-        return socialMedia;
-    }
+    @ManyToOne
+    @JoinColumn(name = "social_media_id", nullable = false)
+    private SocialMedia socialMedia;
 
-    public void setSocialMedia(SocialMedia socialMedia) {
+    /*******************CONSTRUCTOR ***************/
+
+
+    public SocialNetwork(String linkAddress, UserInformation userInformation, SocialMedia socialMedia) {
+        this.linkAddress = linkAddress;
+        this.userInformation = userInformation;
         this.socialMedia = socialMedia;
-    }*/
-
-    public String getUrl() {
-        return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public SocialNetwork() {
     }
 
-/*    public UserInformation getUserInformation() {
+    /************************ GETTER & SETTER **********************/
+
+    public String getLinkAddress() {
+        return linkAddress;
+    }
+
+    public void setLinkAddress(String linkAddress) {
+        this.linkAddress = linkAddress;
+    }
+
+    public UserInformation getUserInformation() {
         return userInformation;
     }
 
     public void setUserInformation(UserInformation userInformation) {
         this.userInformation = userInformation;
-    }*/
+    }
+
+    public SocialMedia getSocialMedia() {
+        return socialMedia;
+    }
+
+    public void setSocialMedia(SocialMedia socialMedia) {
+        this.socialMedia = socialMedia;
+    }
 }

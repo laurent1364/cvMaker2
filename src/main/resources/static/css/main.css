@@ -1,5 +1,5 @@
 body{
-    color: #333;
+    color: #333 !important;
 }
 
 .background {
@@ -20,5 +20,158 @@ body{
 
 .border-none{
     border: none;
+}
+
+.button-logout{
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    border: none;
+    background: #FFF;
+}
+
+
+.navbar .dropdown-menu li > form > button:hover, .navbar .dropdown-menu li > form > button:focus, .navbar.navbar-default .dropdown-menu li > form > button:hover, .navbar.navbar-default .dropdown-menu li > form > button:focus {
+    color: #FFFFFF;
+    background-color: #9c27b0;
+}
+
+.cvmaker-container{
+    margin-top: 53pt;
+    padding-top: 15pt;
+}
+
+.cvmaker-left-menu{
+    display: block !important;
+    z-index: 1000;
+    width: 155pt;
+    padding: 5px 0;
+    margin: 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.cvmaker-left-menu > li > a{
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    font-size: 14px;
+    margin: 0 5px;
+    border-radius: 2px;
+    -webkit-transition: all 150ms linear;
+    -moz-transition: all 150ms linear;
+    -o-transition: all 150ms linear;
+    -ms-transition: all 150ms linear;
+    transition: all 150ms linear;
+}
+
+.cvmaker-left-menu > .active > a{
+
+    color: #fff;
+    text-decoration: none;
+    background-color: #337ab7;
+    outline: 0;
+
+}
+
+.cvmaker-left-menu > .divider{
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+.cvmaker-panel-heading{
+    height: 40pt;
+}
+
+.cvmaker-panel-heading > .panel-title{
+    margin-top: 6pt;
+    text-transform: uppercase;
+    font-size: 15pt;
+}
+
+.cvmaker-panel-add-btn{
+    position: absolute;
+    top: 0;
+    right: 5%;
+}
+
+.cvmaker-btn-no-border{
+    border: none;
+}
+
+.cvmaker-card{
+    padding: 5px;
+    margin: 0;
+    text-align: left;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    margin-bottom: 10pt;
+}
+
+.cvmaker-resume-template-img > img {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.cvmaker-resume-content{
+    margin-top: 10pt;
+}
+
+.cvmaker-resume-content-tr{
+    line-height: 24pt;
+}
+
+.cvmaker-resume-progress-bar {
+    width: 100%;
+    padding-left: 8pt;
+}
+
+.cvmaker-resume-progress-bar > div {
+    margin-bottom: 0 !important;
+}
+
+.cvmaker-resume-progress-bar > div > div > span {
+    position: inherit;
+}
+
+.cvmaker-resume-about-icon{
+
+}
+
+
+.cvmaker-footer{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
 }
 

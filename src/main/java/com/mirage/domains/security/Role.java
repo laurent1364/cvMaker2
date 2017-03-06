@@ -1,11 +1,9 @@
 package com.mirage.domains.security;
 
-import com.mirage.domains.AbstractDomainClass;
+import com.mirage.domains.utils.AbstractDomainClass;
 import com.mirage.domains.User;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,24 @@ public class Role extends AbstractDomainClass{
     private String role;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
     private List<User> users = new ArrayList<>();
+
+
+
+    /************************* CONSTRUCTOR *****************************************/
+
+    public Role(String role) {
+        this.role = role;
+    }
+
+    public Role() {
+    }
+
+    /*****************************GETTER & SETTER ********************************/
 
     public String getRole() {
         return role;
